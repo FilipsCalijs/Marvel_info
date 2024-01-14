@@ -4,6 +4,7 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
 import './charList.scss';
 
+
 class CharList extends Component {
 
     state = {
@@ -34,6 +35,8 @@ class CharList extends Component {
             .then(this.onCharListLoaded)
             .catch(this.onError)
     }
+
+    
     
     renderItems(arr) {
         const items =  arr.map((item) => {
@@ -45,7 +48,8 @@ class CharList extends Component {
             return (
                 <li 
                     className="char__item"
-                    key={item.id}>
+                    key={item.id}
+                    onClick={() => this.props.onCharSelected(item.id) }>
                         <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
                         <div className="char__name">{item.name}</div>
                 </li>
