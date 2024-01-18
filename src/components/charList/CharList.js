@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
 import './charList.scss';
+import CharInfo from '../charInfo/CharInfo';
 
 class CharList extends Component {
 
@@ -107,6 +108,12 @@ class CharList extends Component {
             </div>
         )
     }
+}
+
+
+CharInfo.propTypes = {
+
+    onCharSelected: PropTypes.func.isRequired
 }
 
 export default CharList;
