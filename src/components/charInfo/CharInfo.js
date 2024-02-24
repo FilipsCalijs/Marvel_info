@@ -7,6 +7,10 @@ import Skeleton from '../skeleton/Skeleton';
 
 import './charInfo.scss';
 
+
+
+
+
 class CharInfo extends Component {
 
     state = {
