@@ -1,29 +1,31 @@
-import {lazy, Suspense} from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import AppHeader from "../appHeader/AppHeader";
-
 import Spinner from '../spinner/Spinner';
-// import Page404 from '../pages/404';
 
 const Page404 = lazy(() => import('../pages/404'));
 const MainPage = lazy(() => import('../pages/MainPage'));
 const ComicsPage = lazy(() => import('../pages/ComicsPage'));
-const SingleComicPage  = lazy(() => import('../pages/SingleComicPage'));
+const SingleComicLayout = lazy(() => import('../pages/singleComicLayout/SingleComicLayout'));
+const SingleCharacterLayout = lazy(() => import('../pages/singleCharacterLayout/SingleCharacterLayout'));
+const SinglePage = lazy(() => import('../pages/SinglePage'));
 
 const App = () => {
-    
     return (
+        
         <Router>
             <div className="app">
                 <AppHeader/>
                 <main>
                     <Suspense fallback={<Spinner/>}>
                         <Routes>
-                            <Route exact path="/" element={<MainPage/>}></Route>
-                            <Route exact path="/comics" element={<ComicsPage/>}></Route>
-                            <Route exact path="/comics/:comicId" element={<SingleComicPage/>}></Route>
-                            <Route exact path="*" element={<Page404/>}></Route>
+                            <Route path="/" element={<MainPage />} />
+                            <Route path="/comics" element={<ComicsPage />} />
+                            <Route path="/comics/:id" element={<SinglePage Component={SingleComicLayout} dataType='comic'/>} />
+                            <Route path="/characters/:id" element={<SinglePage Component={SingleCharacterLayout} dataType='character'/>} />
+                            <Route path="*" element={<Page404/>} />
                         </Routes>
                     </Suspense>
                 </main>
