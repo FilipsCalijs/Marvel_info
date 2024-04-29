@@ -3,7 +3,6 @@
 i'll add a react/redux on this app
 This project is an informational website about the Marvel universe. It is built using React and interacts with the [Marvel API](https://developer.marvel.com/) to fetch data about characters, comics, and more.
 
-
 ## Improvements using Hooks
 Future plans include enhancing the project with React hooks such as useState, useEffect, and others for more efficient state management and component lifecycle handling.
 
